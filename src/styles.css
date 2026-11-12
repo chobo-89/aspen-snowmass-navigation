@@ -1,0 +1,17 @@
+@import url('/assets/source.css');
+/* Only prototype scaffolding and source animation endpoints belong here.
+   The original navigation's responsive rules and all CSS hover effects are preserved. */
+html,body,#root {min-height:100%;}
+.prototype-scroll-context {height:1000px;background:#f7f9fb;}
+.prototype-map-image {width:100%;height:100%;object-fit:fill;display:block;}
+.interactive-map__map-inner {position:absolute;}
+.prototype-map-hotspots {position:absolute;inset:0;}
+.prototype-map-hotspot {position:absolute;width:48px;height:48px;transform:translate(-50%,-50%);}
+.prototype-map-hotspot span {display:none;position:absolute;left:45px;top:0;white-space:nowrap;background:#fff;color:#111;padding:12px 18px;font-size:16px;box-shadow:0 2px 7px #0003;}
+.prototype-map-hotspot:hover span,.prototype-map-hotspot:focus-visible span {display:block;}
+.primary-navigation-items-divider {opacity:.5!important;transform:scaleX(1);}
+.weather-widget__panel {visibility:hidden;pointer-events:none;}
+@media (prefers-reduced-motion:reduce) {*,*::before,*::after {animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}}
+
+/* Remove the extra inline-SVG baseline space when embedding captured markup. */
+.primary-navigation-mobile__home-link {line-height:0;}
