@@ -1,0 +1,20 @@
+# Installed dependencies and generated output
+node_modules/
+dist/
+.vite/
+.vercel/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+
+# Local capture metadata; reference screenshots remain versioned
+reference/*.html
+reference/*.json
+
+# Local-only package-manager state; npm's package-lock.json is canonical
+pnpm-lock.yaml
+pnpm-workspace.yaml
