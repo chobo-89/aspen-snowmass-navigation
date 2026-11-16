@@ -1,24 +1,17 @@
-/** Interaction logic reconstructed from the observed site and its public menu scripts.
- * Source styling and markup live separately so subsequent design tweaks are easy to isolate.
- */
-export function initializeNavigation(root) {
-  const controller = new AbortController();
-  const on = (el, event, fn) => el?.addEventListener(event, fn, { signal: controller.signal });
-  const $ = (s, el = root) => el.querySelector(s);
-  const $$ = (s, el = root) => [...el.querySelectorAll(s)];
-  const desktop = () => innerWidth >= 1024;
-  const nav = $('.primary-navigation');
-  const mobile = $('.primary-navigation-mobile');
-  const menuTrigger = $('.header__primary-navigation__trigger');
-  let savedScroll = 0;
-  let bookOpen = null;
-  let menuOpen = false;
+/** Original booking behavior with an independent immersive navigation controller. */
+export function initializeNavigation(root,model) {
+  const controller=new AbortController();
+  const on=(el,event,fn)=>el?.addEventListener(event,fn,{signal:controller.signal});
+  const $=(s,el=root)=>el.querySelector(s);
+  const $$=(s,el=root)=>[...el.querySelectorAll(s)];
+  let savedScroll=0,bookOpen=null,menuOpen=false,childOpen=false,opener=null,panelOpener=null,auxiliary=null;
   let menuAnimation;
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const animate = (el, frames, duration = 400, delay = 0) => el.animate(frames, {
-    duration: reducedMotion ? 0 : duration, delay: reducedMotion ? 0 : delay,
-    easing: 'cubic-bezier(.455,.03,.515,.955)',
-  });
+  const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const animate=(el,frames,duration=400,delay=0)=>el.animate(frames,{duration:reduced()?0:duration,delay:reduced()?0:delay,easing:'cubic-bezier(.455,.03,.515,.955)'});
+  const nav=$('.immersive-overlay'),header=$('.immersive-header'),main=$('main'),season=$('.immersive-season');
+  const menuTrigger=$('.header__primary-navigation__trigger'),book=$('.book-now__container');
+  const search=$('.header-search__panel'),weather=$('.immersive-weather-panel'),picker=$('.immersive-operation-picker');
+  book.classList.remove('primary-navigation__book-now__container');
   function lock() {
     if (document.body.style.position !== 'fixed') {
       savedScroll = scrollY;
@@ -80,121 +73,87 @@ export function initializeNavigation(root) {
     });
   });
   on(window, 'click', () => closeBook());
-  function setMenu(open, focus = true) {
-    closeBook();
-    menuOpen = open;
-    menuAnimation?.cancel();
-    menuTrigger.setAttribute('aria-expanded', String(open));
-    menuTrigger.setAttribute('aria-label', open ? 'Close Navigation' : 'Open Navigation');
-    document.documentElement.style.overflowY = open ? 'hidden' : '';
-    if (desktop()) {
-      if (open) {
-        window.scrollTo({ top: 0, behavior: 'instant' });
-        nav.classList.add('active');
-        menuAnimation = animate(nav, [{ width: '0%' }, { width: '100%' }]);
-        const controls = $$('.primary-navigation__controls > *');
-        controls.forEach((el, i) => animate(el, [{opacity:0,transform:'translateX(10%)'}, {opacity:1,transform:'translateX(0)'}], 300, 66+(controls.length-1-i)*100));
-        $$('.primary-navigation-items__item', nav).forEach((el, i) => animate(el, [{opacity:0,transform:'translateX(5%)'}, {opacity:1,transform:'translateX(0)'}], 300, 200+i*80));
-        if (focus) $('.primary-navigation__close-trigger').focus();
-      } else {
-        menuAnimation = animate(nav, [{width:'100%'},{width:'0%'}]);
-        menuAnimation.onfinish = () => nav.classList.remove('active');
-        if (focus) menuTrigger.focus();
-      }
-    } else {
-      menuTrigger.classList.toggle('is-open', open);
-      mobile.setAttribute('aria-hidden', String(!open));
-      mobile.setAttribute('tabindex', open ? '0' : '-1');
-      if (open) {
-        mobile.classList.add('active');
-        menuAnimation = animate($('.primary-navigation-mobile__inner'), [{transform:'translateY(100%)'},{transform:'translateY(0)'}], 300);
-      } else {
-        menuAnimation = animate($('.primary-navigation-mobile__inner'), [{transform:'translateY(0)'},{transform:'translateY(100%)'}], 300);
-        menuAnimation.onfinish = () => {
-          mobile.classList.remove('active', 'child-list-active');
-          $('.primary-navigation-mobile__child-container').classList.remove('active');
-          $('.primary-navigation-mobile__child-container').setAttribute('aria-hidden','true');
-        };
-      }
+  const focusable=scope=>$$('a,button,input,[tabindex="0"]',scope).filter(e=>!e.disabled&&!e.closest('[inert]')&&e.getClientRects().length&&getComputedStyle(e).visibility==='visible');
+  function refresh(){
+    main.inert=menuOpen||!!auxiliary;
+    nav.inert=!menuOpen||!!auxiliary;header.inert=!!auxiliary;season.inert=!!auxiliary;
+    document.documentElement.style.overflowY=menuOpen||auxiliary?'hidden':'';
+  }
+  function setChild(open){
+    childOpen=open;nav.classList.toggle('has-child',open);
+    if(innerWidth<1280)$$('[data-category]').forEach(b=>b.setAttribute('aria-expanded',String(open&&b.dataset.category===model.category)));
+    $('.immersive-categories').inert=open&&innerWidth<1280;
+    $('.immersive-detail').inert=!open&&innerWidth<1280;
+    if(open){$('.immersive-detail').scrollTop=0;requestAnimationFrame(()=>{if(childOpen)$('[data-detail] h2')?.focus({preventScroll:true});});}
+    else if(innerWidth<1280)$(`.immersive-categories [data-category="${model.category}"]`)?.focus({preventScroll:true});
+  }
+  function closePicker(restore=true){picker.hidden=true;$('.immersive-layout').inert=false;$('.immersive-operations').inert=false;if(restore)panelOpener?.focus({preventScroll:true});}
+  function setMenu(open,id=null,source=menuTrigger){
+    closeBook();closePicker(false);menuAnimation?.cancel();
+    if(open&&!menuOpen)opener=source;
+    menuOpen=open;root.classList.toggle('immersive-open',open);header.classList.toggle('solid',open);
+    menuTrigger.classList.toggle('is-open',open);menuTrigger.setAttribute('aria-expanded',String(open));menuTrigger.setAttribute('aria-label',open?'Close Navigation':'Open Navigation');
+    book.classList.toggle('primary-navigation__book-now__container',open);
+    nav.setAttribute('aria-hidden',String(!open));refresh();
+    if(open){nav.classList.add('active');model.render(id||model.category);setChild(innerWidth>=1280||!!id);menuAnimation=animate(nav,[{opacity:0,transform:'translateY(-16px)'},{opacity:1,transform:'translateY(0)'}],innerWidth>=1280?400:300);if(innerWidth>=1280)menuTrigger.focus({preventScroll:true});}
+    else{model.render(model.category);childOpen=false;menuAnimation=animate(nav,[{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-16px)'}],innerWidth>=1280?400:300);menuAnimation.onfinish=()=>{if(!menuOpen)nav.classList.remove('active','has-child');};const target=opener?.isConnected?opener:innerWidth>=1280?$('.immersive-primary [data-category="'+model.category+'"]'):menuTrigger;target.focus({preventScroll:true});}
+  }
+  function closeAux(){
+    if(!auxiliary)return;const panel=auxiliary;auxiliary=null;
+    panel.style.visibility='';panel.style.opacity='';panel.style.pointerEvents='';panel.inert=true;panel.classList.remove('header-search__panel--open');
+    refresh();panelOpener?.focus({preventScroll:true});
+  }
+  function openAux(panel,trigger){
+    closeBook();panelOpener=trigger;auxiliary=panel;panel.inert=false;panel.style.visibility='visible';panel.style.opacity='1';panel.style.pointerEvents='auto';
+    if(panel===search){panel.classList.add('header-search__panel--open');const box=$('.header-search__box');box.style.transform='translateY(0)';box.style.opacity='1';}
+    else{$('.weather-widget__panel-box').style.transform='translateX(0)';$('.weather-widget__panel-close').style.opacity='1';}
+    refresh();(panel===search?$('input',panel):$('.weather-widget__panel-close')).focus({preventScroll:true});
+  }
+  on(menuTrigger,'click',event=>{event.stopPropagation();setMenu(!menuOpen);});
+  on($('.immersive-mega-close'),'click',()=>setMenu(false));
+  on($('.immersive-scrim'),'click',()=>setMenu(false));
+  on($('.immersive-back'),'click',()=>setChild(false));
+  on($('.immersive-detail'),'transitionend',event=>{if(event.target===$('.immersive-detail')&&event.propertyName==='transform'&&childOpen&&menuOpen)$('[data-detail] h2')?.focus({preventScroll:true});});
+  on(root,'click',event=>{
+    const category=event.target.closest('[data-category]');
+    if(category){const primary=!!category.closest('.immersive-primary');if(primary)opener=category;if(primary&&menuOpen&&model.category===category.dataset.category){setMenu(false);return;}if(!menuOpen)setMenu(true,category.dataset.category,category);else{closeBook();closePicker(false);model.render(category.dataset.category);setChild(true);}return;}
+    const seasonButton=event.target.closest('button[data-season]');
+    if(seasonButton){closeBook();closePicker(false);model.setSeason(seasonButton.dataset.season);refresh();return;}
+    const operation=event.target.closest('[data-operation]');
+    if(operation){
+      panelOpener=operation;const type=operation.dataset.operation;picker.querySelector('h2').textContent=type==='maps'?'Choose your trail map':'Choose your lift report';
+      picker.querySelector('ul').innerHTML=model.operationLinks(type).map(l=>`<li><a class="immersive-link" href="${l.href}" target="_blank" rel="noopener noreferrer">${l.label}</a></li>`).join('');
+      picker.hidden=false;$('.immersive-layout').inert=true;$('.immersive-operations').inert=true;picker.querySelector('h2').focus({preventScroll:true});return;
     }
-  }
-  on(menuTrigger, 'click', () => setMenu(!menuOpen));
-  on($('.primary-navigation__close-trigger'), 'click', () => setMenu(false));
-  const child = $('.primary-navigation-mobile__child-container');
-  function setChild(open) {
-    mobile.classList.toggle('child-list-active', open);
-    child.classList.toggle('active', open);
-    child.setAttribute('aria-hidden', String(!open));
-    child.setAttribute('tabindex', open ? '0' : '-1');
-  }
-  $$('.primary-navigation-mobile__main-link > button').forEach(b => on(b, 'click', event => {event.stopPropagation(); setChild(true);}));
-  on($('.primary-navigation-mobile__child-list-close-trigger'), 'click', event => {event.stopPropagation(); setChild(false);});
-  $$('.primary-navigation__home-link,.primary-navigation-mobile__home-link,.header__home-link').forEach(link => on(link,'click', event => {
-    event.preventDefault(); if (menuOpen) setMenu(false); window.scrollTo({top:0,behavior:'smooth'});
-  }));
-  // Preserve the source map's visual context. Live map panning/zooming is intentionally
-  // excluded from this navigation prototype; the four mountain links remain real links.
-  const mountainItems = $$('.interactive-map__navigation-link', nav);
-  mountainItems.forEach(item => {
-    const active = () => {mountainItems.forEach(x => x.classList.remove('active'));item.classList.add('active');};
-    on(item, 'mouseenter', active); on(item, 'focusin', active);
   });
-  const points = [[83,52], [64,54], [49,43], [19,37]];
-  const spots = $('.prototype-map-hotspots');
-  spots.replaceChildren();
-  mountainItems.slice(1).forEach((item, i) => {
-    const source = $('a',item), link = document.createElement('a');
-    link.href = source.href; link.target='_blank';link.rel='noopener noreferrer';
-    link.className='prototype-map-hotspot';link.style.left=points[i][0]+'%';link.style.top=points[i][1]+'%';
-    link.setAttribute('aria-label',source.textContent.trim());
-    const label = document.createElement('span'); label.textContent=source.textContent.trim();link.append(label);spots.append(link);
-    on(link,'mouseenter',()=>{mountainItems.forEach(x=>x.classList.remove('active'));item.classList.add('active');});
-  });
-  const search = $('.header-search__panel');
-  function closeSearch() {search.style.visibility='';search.style.opacity='';search.classList.remove('header-search__panel--open'); if(!menuOpen)document.documentElement.style.overflowY='';}
-  function openSearch() {
-    if (menuOpen) setMenu(false, false);
-    search.style.visibility='visible';search.style.opacity='1';search.classList.add('header-search__panel--open');
-    const box = $('.header-search__box');box.style.transform='translateY(0)';box.style.opacity='1';
-    document.documentElement.style.overflowY='hidden';$('input', search).focus();
-  }
-  on($('.header-search__trigger'),'click',openSearch);
-  on($('.primary-navigation__search__trigger'),'click',openSearch);
-  on($('.header-search__close'),'click',closeSearch);
-  on(search,'click',event=>{if(event.target===search)closeSearch();});
-  const weather = $('.weather-widget');
-  const panel = $('.weather-widget__panel');
-  function toggleWeather() {
-    weather.classList.toggle('active');
-    const open=weather.classList.contains('active');
-    panel.style.visibility=open?'visible':'';panel.style.opacity=open?'1':'';panel.style.pointerEvents=open?'auto':'';
-    $('.weather-widget__panel-close').style.opacity=open?'1':'0';
-    $('.weather-widget__panel-box').style.transform=open?'translateX(0)':'';
-  }
-  $$('.weather-widget__trigger').forEach(b=>on(b,'click',toggleWeather));
-  on($('.weather-widget__panel-close'),'click',toggleWeather);
+  const preview=event=>{const row=event.target.closest('[data-mountain]');if(row)model.previewMountain(+row.dataset.mountain);};
+  on(root,'pointerover',preview);on(root,'focusin',preview);
+  on($('.immersive-picker-close'),'click',()=>closePicker());
+  on($('.header-search__trigger'),'click',event=>openAux(search,event.currentTarget));
+  on($('.immersive-weather'),'click',event=>openAux(weather,event.currentTarget));
+  on($('.header-search__close'),'click',closeAux);on($('.weather-widget__panel-close'),'click',closeAux);
+  on(search,'click',event=>{if(event.target===search)closeAux();});on(weather,'click',event=>{if(event.target===weather)closeAux();});
+  on($('.immersive-brand a'),'click',event=>{event.preventDefault();if(menuOpen)setMenu(false);window.scrollTo({top:0,behavior:reduced()?'instant':'smooth'});});
   on(document,'keydown',event=>{
-    if(event.key==='Escape') {
-      if(bookOpen)closeBook(true);
-      else if(search.style.visibility==='visible')closeSearch();
-      else if(weather.classList.contains('active'))toggleWeather();
-      else if(menuOpen)setMenu(false);
+    if(event.key==='Escape'){
+      event.preventDefault();if(bookOpen)closeBook(true);else if(auxiliary)closeAux();else if(!picker.hidden)closePicker();else if(menuOpen&&childOpen&&innerWidth<1280)setChild(false);else if(menuOpen)setMenu(false);
     }
-    if(event.key==='Tab'&&menuOpen&&desktop()) {
-      const scope=bookOpen?.popup||nav;
-      const controls=$$('a,button,input,[tabindex="0"]',scope).filter(e=>e.getClientRects().length&&getComputedStyle(e).visibility==='visible');
-      if(event.shiftKey&&document.activeElement===controls[0]){event.preventDefault();controls.at(-1)?.focus();}
-      else if(!event.shiftKey&&document.activeElement===controls.at(-1)){event.preventDefault();controls[0]?.focus();}
+    if(event.key==='Tab'&&(menuOpen||auxiliary||bookOpen)){
+      let scopes=auxiliary?[auxiliary]:bookOpen?[bookOpen.trigger,bookOpen.popup]:!picker.hidden?[picker]:[header,nav];
+      const controls=scopes.flatMap(el=>el.matches('button,a,input')?[el]:focusable(el));
+      if(!controls.length)return;
+      event.preventDefault();
+      const active=document.activeElement,index=controls.indexOf(active);
+      if(index>=0)controls[(index+(event.shiftKey?-1:1)+controls.length)%controls.length].focus();
+      else {
+        const candidates=controls.filter(el=>active.compareDocumentPosition(el)&(event.shiftKey?Node.DOCUMENT_POSITION_PRECEDING:Node.DOCUMENT_POSITION_FOLLOWING));
+        (event.shiftKey?candidates.at(-1)||controls.at(-1):candidates[0]||controls[0]).focus();
+      }
     }
   });
-  const headerBook=$('.header__book-now__container');
-  const sticky=()=>headerBook.classList.toggle('fixed',desktop()&&scrollY>1000);
-  on(window,'scroll',sticky);
-  let wasDesktop=desktop();
-  on(window,'resize',()=>{if(wasDesktop!==desktop()) {
-    closeBook();nav.classList.remove('active');mobile.classList.remove('active','child-list-active');
-    menuOpen=false;menuTrigger.classList.remove('is-open');menuTrigger.setAttribute('aria-expanded','false');menuTrigger.setAttribute('aria-label','Open Navigation');
-    mobile.setAttribute('aria-hidden','true');document.documentElement.style.overflowY='';wasDesktop=desktop();
-  }sticky();});
-  return () => {controller.abort();document.documentElement.style.overflowY='';if(bookOpen?.locks)unlock();};
+  let compact=innerWidth<1280;
+  on(window,'resize',()=>{if(compact!==(innerWidth<1280)){compact=innerWidth<1280;closeAux();if(menuOpen)setMenu(false);$('.immersive-categories').inert=false;$('.immersive-detail').inert=compact;}});
+  const scrolled=()=>header.classList.toggle('scrolled',scrollY>40);on(window,'scroll',scrolled);scrolled();
+  $('.immersive-detail').inert=compact;
+  return()=>{controller.abort();menuAnimation?.cancel();main.inert=false;document.documentElement.style.overflowY='';if(bookOpen?.locks)unlock();};
 }
