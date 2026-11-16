@@ -1,0 +1,62 @@
+{
+  "border": "5px solid rgb(247, 249, 251)",
+  "button": {
+    "bottom": 101,
+    "height": 62,
+    "left": 1255,
+    "right": 1403,
+    "top": 39,
+    "width": 148,
+    "x": 1255,
+    "y": 39
+  },
+  "font": "700 18px Whitney, sans-serif",
+  "links": [
+    {
+      "href": "https://shop.aspensnowmass.com/s/season-passes/all-season-passes",
+      "label": "Season Passes"
+    },
+    {
+      "href": "https://shop.aspensnowmass.com/s/all-lift-tickets",
+      "label": "Lift Tickets"
+    },
+    {
+      "href": "https://shop.aspensnowmass.com/s/ski-snowboard-lessons/private-lessons",
+      "label": "Private Lessons"
+    },
+    {
+      "href": "https://shop.aspensnowmass.com/s/ski-snowboard-lessons/group-lessons",
+      "label": "Adult Lessons"
+    },
+    {
+      "href": "https://shop.aspensnowmass.com/s/ski-snowboard-lessons/kids-and-teen-lessons",
+      "label": "Child and Teen Lessons"
+    },
+    {
+      "href": "https://shop.aspensnowmass.com/s/winter-rentals",
+      "label": "Ski and Snowboard Rentals"
+    },
+    {
+      "href": "https://shop.aspensnowmass.com/s/winter-activities",
+      "label": "Winter Activities"
+    },
+    {
+      "href": "https://www.aspensnowmass.com/visit/lodging",
+      "label": "Lodging Packages"
+    },
+    {
+      "href": "http://www.aspencollection.com/",
+      "label": "Shop Retail"
+    }
+  ],
+  "popup": {
+    "bottom": 586,
+    "height": 490,
+    "left": 1123,
+    "right": 1403,
+    "top": 96,
+    "width": 280,
+    "x": 1123,
+    "y": 96
+  }
+}
