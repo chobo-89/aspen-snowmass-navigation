@@ -16,3 +16,11 @@ Preserve Aspen Snowmass main navigation on desktop and mobile: original fonts an
 ## Repository and Figma workflow
 
 The user selected this order: save to a private GitHub repository, try the repository in Figma, then connect Vercel later. Do not deploy or connect Vercel before a later instruction. Use npm and package-lock.json for portable installs. Preserve the verified baseline and use branches for design experiments.
+
+## Exploration B overrides
+
+The user explicitly requested one independent immersive navigation concept, starting from the original baseline. Follow EXPLORATION-B-BRIEF.md and EXPLORATION-B.md. B may change the overall layout and hero composition while preserving Aspen brand assets, original booking internals, source typography/icons and animation language. Do not use Exploration A as the implementation base. Do not edit the original or A, start C, push to GitHub, deploy, or import to Figma without a later request. This checkout is the real worktree on exploration/immersive-navigation attached to work/aspen-exploration-baseline.git.
+
+## B review feedback — 2026-11-16
+
+Remove all visible Menu/Close text from the hamburger control, including tablet. At desktop widths (1280px+), show the four category labels and remove the hamburger and repeated category rail. Each label toggles its mega menu directly below the header; switching labels switches contents. Keep icon-only menu and drawers for tablet/mobile. Put the segmented Winter/Summer control before account/cart/search on desktop, using the user's rectangular outlined reference. Use the exact supplied 14×14 snowflake and sun paths in src/assets/season-*.svg; currentColor allows selected-state inversion. Keep booking and the original/A implementations unchanged.

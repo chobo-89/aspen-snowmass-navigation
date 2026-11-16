@@ -1,3 +1,7 @@
+# Exploration B — Immersive Navigation
+
+Start with [EXPLORATION-B.md](EXPLORATION-B.md) for the current preview, design decisions and review instructions. This independent worktree is based on the original implementation; the baseline notes below remain for provenance.
+
 # Aspen Snowmass navigation prototype
 
 Local preview after starting the project: http://127.0.0.1:5173/
