@@ -1,0 +1,211 @@
+{
+  "mobile-root.jpg": {
+    "raw": [
+      487,
+      1055
+    ],
+    "css": [
+      390,
+      844
+    ],
+    "normalization": "crop canvas padding; no resize"
+  },
+  "desktop-context-summer.jpg": {
+    "raw": [
+      1891,
+      1228
+    ],
+    "css": [
+      1512,
+      982
+    ],
+    "normalization": "crop canvas padding; no resize"
+  },
+  "desktop-maps.jpg": {
+    "raw": [
+      1891,
+      1228
+    ],
+    "css": [
+      1512,
+      982
+    ],
+    "normalization": "crop canvas padding; no resize"
+  },
+  "mobile-weather.jpg": {
+    "raw": [
+      487,
+      1055
+    ],
+    "css": [
+      390,
+      844
+    ],
+    "normalization": "crop canvas padding; no resize"
+  },
+  "mobile-maps.jpg": {
+    "raw": [
+      487,
+      1055
+    ],
+    "css": [
+      390,
+      844
+    ],
+    "normalization": "crop canvas padding; no resize"
+  },
+  "desktop-context-winter.jpg": {
+    "raw": [
+      1891,
+      1228
+    ],
+    "css": [
+      1512,
+      982
+    ],
+    "normalization": "crop canvas padding; no resize"
+  },
+  "desktop-root.jpg": {
+    "raw": [
+      1891,
+      1228
+    ],
+    "css": [
+      1512,
+      982
+    ],
+    "normalization": "crop canvas padding; no resize"
+  },
+  "tablet-root.jpg": {
+    "raw": [
+      959,
+      1280
+    ],
+    "css": [
+      767,
+      1024
+    ],
+    "normalization": "crop canvas padding; no resize"
+  },
+  "desktop-weather.jpg": {
+    "raw": [
+      1891,
+      1228
+    ],
+    "css": [
+      1512,
+      982
+    ],
+    "normalization": "crop canvas padding; no resize"
+  },
+  "desktop-closed.jpg": {
+    "raw": [
+      1891,
+      1228
+    ],
+    "css": [
+      1512,
+      982
+    ],
+    "normalization": "crop canvas padding; no resize"
+  },
+  "mobile-book.jpg": {
+    "raw": [
+      487,
+      1055
+    ],
+    "css": [
+      390,
+      844
+    ],
+    "normalization": "crop canvas padding; no resize"
+  },
+  "desktop-options.jpg": {
+    "raw": [
+      1891,
+      1228
+    ],
+    "css": [
+      1512,
+      982
+    ],
+    "normalization": "crop canvas padding; no resize"
+  },
+  "tablet-context.jpg": {
+    "raw": [
+      959,
+      1280
+    ],
+    "css": [
+      767,
+      1024
+    ],
+    "normalization": "crop canvas padding; no resize"
+  },
+  "mobile-context-top.jpg": {
+    "raw": [
+      487,
+      1055
+    ],
+    "css": [
+      390,
+      844
+    ],
+    "normalization": "crop canvas padding; no resize"
+  },
+  "mobile-context-summer.jpg": {
+    "raw": [
+      487,
+      1055
+    ],
+    "css": [
+      390,
+      844
+    ],
+    "normalization": "crop canvas padding; no resize"
+  },
+  "desktop-book.jpg": {
+    "raw": [
+      1891,
+      1228
+    ],
+    "css": [
+      1512,
+      982
+    ],
+    "normalization": "crop canvas padding; no resize"
+  },
+  "desktop-1280-context.jpg": {
+    "raw": [
+      1600,
+      1000
+    ],
+    "css": [
+      1280,
+      800
+    ],
+    "normalization": "crop canvas padding; no resize"
+  },
+  "mobile-options.jpg": {
+    "raw": [
+      487,
+      1055
+    ],
+    "css": [
+      390,
+      844
+    ],
+    "normalization": "crop canvas padding; no resize"
+  },
+  "desktop-buttermilk-summer.jpg": {
+    "raw": [
+      1891,
+      1228
+    ],
+    "css": [
+      1512,
+      982
+    ],
+    "normalization": "crop canvas padding; no resize"
+  }
+}

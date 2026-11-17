@@ -1,0 +1,212 @@
+{
+  "aspen-mountain-summer.jpg": {
+    "slug": "aspen-mountain",
+    "season": "summer",
+    "page": "https://www.aspensnowmass.com/four-mountains/aspen-mountain/summer",
+    "alt": "Gondola cars travel uphill, on a sunny summer day at aspen mountain, above green mountain hills, tall pine trees casting shadows in the afternoon sun, with blue skies above",
+    "src": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/summer/2025/am_hero_2425.png?mw=1506&mh=538&hash=0C88D60BDAC04A6D99967765C132F2DF",
+    "downloadUrl": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/summer/2025/am_hero_2425.png",
+    "bytes": 1060123,
+    "encoding": "JPEG, source dimensions retained",
+    "dimensions": [
+      1507,
+      847
+    ]
+  },
+  "aspen-mountain-winter.jpg": {
+    "slug": "aspen-mountain",
+    "season": "winter",
+    "page": "https://www.aspensnowmass.com/four-mountains/aspen-mountain",
+    "alt": "Aerial view of aspen mountain during morning sunrise, sun casts golden glow on town and snowy mountain",
+    "src": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/winter/2026-27/am_mainhero_2627_v1.png?mw=1506&mh=538&hash=DFFA5517F348984D9AC170D6947DACB1",
+    "downloadUrl": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/winter/2026-27/am_mainhero_2627_v1.png",
+    "bytes": 1028232,
+    "encoding": "JPEG, source dimensions retained",
+    "dimensions": [
+      1508,
+      848
+    ]
+  },
+  "aspen-highlands-summer.jpg": {
+    "slug": "aspen-highlands",
+    "season": "summer",
+    "page": "https://www.aspensnowmass.com/four-mountains/aspen-highlands/summer",
+    "alt": "Aspen Highlands peaks during the summer months ",
+    "src": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/summer/2026/ah_hero_v1_26.png?mw=1506&mh=538&hash=4C0116A7F1C5D788E1446FFE17D8D9E8",
+    "downloadUrl": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/summer/2026/ah_hero_v1_26.png",
+    "bytes": 882853,
+    "encoding": "JPEG, source dimensions retained",
+    "dimensions": [
+      1508,
+      931
+    ]
+  },
+  "aspen-highlands-winter.jpg": {
+    "slug": "aspen-highlands",
+    "season": "winter",
+    "page": "https://www.aspensnowmass.com/four-mountains/aspen-highlands",
+    "alt": "Aerial view of Aspen Highlands, during winter",
+    "src": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/winter/2026-27/aspenhighlands_hero_2627_v1.png?mw=1506&mh=538&hash=8D3EBE4CD6495D23B17C940FC1090B79",
+    "downloadUrl": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/winter/2026-27/aspenhighlands_hero_2627_v1.png",
+    "bytes": 874606,
+    "encoding": "JPEG, source dimensions retained",
+    "dimensions": [
+      1507,
+      812
+    ]
+  },
+  "buttermilk-summer.jpg": {
+    "slug": "buttermilk",
+    "season": "summer",
+    "page": "https://www.aspensnowmass.com/four-mountains/buttermilk/summer",
+    "alt": "Aerial view of Buttermilk mountain, in summer, green ski runs and snowy peaks in distance",
+    "src": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/summer/2026/bm_hero2026_v1.png?mw=1506&mh=538&hash=6B9AA12C111A24BC67B74ACD288EB269",
+    "downloadUrl": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/summer/2026/bm_hero2026_v1.png",
+    "bytes": 772185,
+    "encoding": "JPEG, source dimensions retained",
+    "dimensions": [
+      1508,
+      931
+    ]
+  },
+  "buttermilk-winter.jpg": {
+    "slug": "buttermilk",
+    "season": "winter",
+    "page": "https://www.aspensnowmass.com/four-mountains/buttermilk",
+    "alt": "two small children walk behind ski instructor with their skies in hand",
+    "src": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/winter/2026-27/buttermilk_hero_2627_v1.png?mw=1506&mh=538&hash=ED86DD18030857D861B3FF37673DC505",
+    "downloadUrl": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/winter/2026-27/buttermilk_hero_2627_v1.png",
+    "bytes": 615109,
+    "encoding": "JPEG, source dimensions retained",
+    "dimensions": [
+      1507,
+      930
+    ]
+  },
+  "snowmass-summer.jpg": {
+    "slug": "snowmass",
+    "season": "summer",
+    "page": "https://www.aspensnowmass.com/four-mountains/snowmass/summer",
+    "alt": "Downhill Mountain Biker cruises down a single track line at the snowmass bike park. The valley spreads out below, with green rolling hills and a beautiful blue lake. Chairlift poles rise up the mountain.",
+    "src": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/summer/2025/sm_hero_2425.png?mw=1506&mh=538&hash=F40F961F4A19E3FB822229B5A6DFC613",
+    "downloadUrl": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/summer/2025/sm_hero_2425.png",
+    "bytes": 761359,
+    "encoding": "JPEG, source dimensions retained",
+    "dimensions": [
+      1507,
+      847
+    ]
+  },
+  "snowmass-winter.jpg": {
+    "slug": "snowmass",
+    "season": "winter",
+    "page": "https://www.aspensnowmass.com/four-mountains/snowmass",
+    "alt": "Family stands next to the aspen leaf statue on blue bird day at Snowmass",
+    "src": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/winter/2026-27/snowmass_hero_2627_v1.png?mw=1506&mh=538&hash=FB436FD1F709074BCB69EEAE34F95FB9",
+    "downloadUrl": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/winter/2026-27/snowmass_hero_2627_v1.png",
+    "bytes": 511222,
+    "encoding": "JPEG, source dimensions retained",
+    "dimensions": [
+      1508,
+      848
+    ]
+  },
+  "landscape-summer.jpg": {
+    "alt": "Beautiful summer morning at Aspen mountain, blue and yellow sunrise over green and purple wildflowers ",
+    "src": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/summer/2026/4mtn_hero_v1_26.png?mw=1506&mh=538&hash=49C82E6000C50AFF5974DEBF2D8B7C97",
+    "srcset": null,
+    "downloadUrl": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/summer/2026/4mtn_hero_v1_26.png",
+    "bytes": 569994,
+    "encoding": "JPEG, source dimensions retained",
+    "dimensions": [
+      1508,
+      931
+    ]
+  },
+  "lodging-summer.jpg": {
+    "alt": "Limelight Snowmass with Snowmass ski resort in background",
+    "href": "https://www.aspensnowmass.com/visit/lodging",
+    "src": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/image-cta-with-title-and-description/image-cta-card-wide/summer/2024/staysummercta.png?as=0&w=553&hash=A27489E37EA28273420991682CFF3E0E&h=354",
+    "srcset": null,
+    "downloadUrl": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/image-cta-with-title-and-description/image-cta-card-wide/summer/2024/staysummercta.png",
+    "bytes": 302054,
+    "encoding": "JPEG, source dimensions retained",
+    "dimensions": [
+      766,
+      504
+    ]
+  },
+  "lodging-winter.jpg": {
+    "alt": "Stay Aspen Snowmass, Winter Lodging, Aspen, Snowmass",
+    "src": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/winter/2023-24/sas-winter-lodging-2-hero-20230925.png?mw=1506&mh=538&hash=EADBD08F6C4A235512EB3D9ADBA73BC6",
+    "downloadUrl": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/hero/hero-image/winter/2023-24/sas-winter-lodging-2-hero-20230925.png",
+    "bytes": 1074632,
+    "encoding": "JPEG, source dimensions retained",
+    "dimensions": [
+      1507,
+      930
+    ]
+  },
+  "dining-summer.jpg": {
+    "alt": "Man holds up his hand hold a beer, he is sitting outside on the deck at Elkcamp, with a large slice of cheese pizza and a cheeseburger ",
+    "href": "https://www.aspensnowmass.com/visit/dining",
+    "src": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/image-cta-with-title-and-description/image-cta-card-tall/summer/2025/4m_dining_tallcard_2425.png?as=0&w=553&hash=D5F84448867ADF4A1312CB535D08E2C7&h=354",
+    "srcset": null,
+    "downloadUrl": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/image-cta-with-title-and-description/image-cta-card-tall/summer/2025/4m_dining_tallcard_2425.png",
+    "bytes": 217504,
+    "encoding": "JPEG, source dimensions retained",
+    "dimensions": [
+      554,
+      779
+    ]
+  },
+  "dining-winter.jpg": {
+    "alt": "burger with cheese dripping down sides at snowmass dining",
+    "href": "https://www.aspensnowmass.com/visit/dining",
+    "src": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/image-cta-with-title-and-description/image-cta-card-tall/winter/2026-27/fourmtn_diningcta_tall2627_v1.png?as=0&w=553&hash=3C63B2203CFE781EAA67FBA6BDD62DDF&h=354",
+    "downloadUrl": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/image-cta-with-title-and-description/image-cta-card-tall/winter/2026-27/fourmtn_diningcta_tall2627_v1.png",
+    "bytes": 82104,
+    "encoding": "JPEG, source dimensions retained",
+    "dimensions": [
+      329,
+      585
+    ]
+  },
+  "lessons-winter.jpg": {
+    "alt": "Ski pro at Aspen carves down slope followed by 4 young kids",
+    "href": "https://www.aspensnowmass.com/visit/lessons",
+    "src": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/image-cta-with-title-and-description/image-cta-card-tall/winter/2026-27/fourmtn_lessonscta_tall2627_v1.png?as=0&w=553&hash=C6413711EED6A69FAD5A96CDE3C97118&h=354",
+    "downloadUrl": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/image-cta-with-title-and-description/image-cta-card-tall/winter/2026-27/fourmtn_lessonscta_tall2627_v1.png",
+    "bytes": 79664,
+    "encoding": "JPEG, source dimensions retained",
+    "dimensions": [
+      329,
+      585
+    ]
+  },
+  "tickets-winter.jpg": {
+    "alt": "woman prints out ticket at snowmass to ski",
+    "href": "https://www.aspensnowmass.com/visit/tickets-and-passes",
+    "src": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/image-cta-with-title-and-description/image-cta-card-tall/winter/2026-27/fourmtn_liftticketcta_tall2627_v1.png?as=0&w=477&hash=3BF711DB9A5070BD59795DAC38B7434E&h=314",
+    "downloadUrl": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/image-cta-with-title-and-description/image-cta-card-tall/winter/2026-27/fourmtn_liftticketcta_tall2627_v1.png",
+    "bytes": 139531,
+    "encoding": "JPEG, source dimensions retained",
+    "dimensions": [
+      329,
+      585
+    ]
+  },
+  "activities-summer.jpg": {
+    "alt": "young man reaches for a rock climbing hold at the snowmass climbing wall",
+    "href": "https://www.aspensnowmass.com/visit/activities/summer/lost-forest",
+    "src": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/image-cta-with-title-and-description/image-cta-card-tall/summer/2026/4mtn_explorelostforest_v1_26.png?as=0&w=553&hash=A8DB8E6437AEEAB1AF265AFC7AE4EFC3&h=354",
+    "srcset": null,
+    "downloadUrl": "https://www.aspensnowmass.com/-/media/aspen-snowmass/images/image-cta-with-title-and-description/image-cta-card-tall/summer/2026/4mtn_explorelostforest_v1_26.png",
+    "bytes": 128220,
+    "encoding": "JPEG, source dimensions retained",
+    "dimensions": [
+      329,
+      585
+    ]
+  }
+}
