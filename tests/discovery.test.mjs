@@ -45,3 +45,10 @@ test('reopening returns to the simple entry while preserving the season',()=>{
 test('unknown choices and seasons do not corrupt the current selection',()=>{
  const state=transition(open(),{type:'CATEGORY',id:'mountains'});assert.deepEqual(transition(state,{type:'OPTION',id:'unknown'}),state);assert.deepEqual(transition(state,{type:'SEASON',season:'autumn'}),state);
 });
+test('reselecting a locked category or option preserves the immersive selection',()=>{
+ const state=apply(open(),{type:'CATEGORY',id:'mountains'},{type:'OPTION',id:'aspen-mountain'});
+ assert.equal(transition(state,{type:'OPTION',id:'aspen-mountain'}),state);
+ assert.equal(transition(state,{type:'CATEGORY',id:'mountains'}),state);
+ const changed=transition(state,{type:'OPTION',id:'snowmass'});
+ assert.equal(changed.option,'snowmass');assert.equal(changed.category,'mountains');
+});
