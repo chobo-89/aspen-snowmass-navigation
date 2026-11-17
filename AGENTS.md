@@ -16,3 +16,7 @@ Preserve Aspen Snowmass main navigation on desktop and mobile: original fonts an
 ## Repository and Figma workflow
 
 The user selected this order: save to a private GitHub repository, try the repository in Figma, then connect Vercel later. Do not deploy or connect Vercel before a later instruction. Use npm and package-lock.json for portable installs. Preserve the verified baseline and use branches for design experiments.
+
+## Exploration C — Progressive Discovery
+
+This is a separate worktree on exploration/progressive-discovery, based on the verified original snapshot 7336516. The user's current brief overrides the earlier clone-only restriction for this checkout. Build one cascading navigation architecture: category → option → useful context, without auto-selecting an option. Keep Trail Maps, Weather, Mountain Cameras, Lift Status and Parking persistently accessible at every expanded level. Season changes must update options, profiles, imagery and relevant destinations, preserving a selected mountain. Reuse the supplied seasonal SVG paths and source booking internals/brand assets. Keep visible Menu/Close labels off the source menu icon. Do not edit original/A/B or publish/import this exploration without a later request. The full brief is in EXPLORATION-C-BRIEF.md.

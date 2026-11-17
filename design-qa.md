@@ -1,61 +1,42 @@
-# Navigation verification
+# Exploration C — Design QA
 
 final result: passed
 
-Passing scope: desktop/mobile main navigation at the captured viewports, with the explicitly permitted static map substitution. This is a high-fidelity prototype, not a guarantee of identical pixels at every browser, breakpoint, hover combination or animation frame.
+## Comparison targets
 
-## Evidence
+This is an architecture exploration, not a pixel clone of Eleven. The interaction target is its adjacent destination flyout; Aspen source controls and supplied icons provide the brand/fidelity targets.
 
-Source URL: https://www.aspensnowmass.com/
+Source visual truth: `exploration-evidence/eleven-cascade.jpg` and `../aspen-evolved-original/exploration-evidence/original-book.jpg` (1512×982).
 
-- Source visual truth: `reference/desktop-menu.jpg`, `reference/desktop-menu-book.jpg`, `reference/mobile-menu.jpg`, `reference/mobile-mountains.jpg`, `reference/mobile-book.jpg`.
-- Implementation: `verification/desktop-menu.jpg`, `verification/desktop-menu-book.jpg`, `verification/mobile-menu.jpg`, `verification/mobile-mountains.jpg`, `verification/mobile-menu-book.jpg`.
-- Full-view combined comparisons: `verification/desktop-comparison.jpg` and `verification/mobile-comparison.jpg`.
-- Focused combined comparisons: `verification/desktop-menu-book-comparison.jpg` and `verification/mobile-mountains-comparison.jpg`.
-- Desktop source and implementation: 1440 × 1000 CSS px; screenshots 1440 × 1000 pixels. Mobile: 390 × 844 CSS px and image pixels. Both are captured at matching effective 1× density; no density resizing was needed.
-- Short desktop window: 1440 × 700; `verification/desktop-menu-scrolled.jpg`.
+Rendered evidence: `desktop-root.jpg`, `desktop-options.jpg`, `desktop-context-winter.jpg`, `desktop-context-summer.jpg`, `tablet-context.jpg`, `mobile-root.jpg`, `mobile-context-summer.jpg`, `desktop-book.jpg` in `exploration-evidence/`.
 
-## Comparison history and fixes
+Full-view combined inputs, opened and reviewed: `reference-comparison.jpg`, `progression-board.jpg`, `responsive-board.jpg`. Seasonal captures supplement these. Focused combined input: `booking-comparison.jpg`, comparing native 280×490 booking regions (source x1113/y101; C x1182/y93). Header placement intentionally differs; booking internal anatomy is preserved.
 
-1. P1: captured transform on the cloned Book Now container created a stacking context, placing some content above the popup. Removed this transient transform. Recaptured dropdown shows a clean layer above navigation text.
-2. P1: prototype map wrapper was changed to relative positioning, collapsing its height in the original aspect-ratio container. Restored absolute positioning. Final map occupies the original 560.734 × 605.586 px slot at x359.25/y155.
-3. P2: the original captured map was mid-animation and zoomed out. Replaced it with a crop of the fully settled source capture, retaining attribution. Static-map behavior is the accepted scope exception.
-4. P2: mobile inline SVG baseline introduced 9.54px extra space below the logo. Setting the captured logo link's line height to zero restored the source menu spacing. Full-view and mountain-submenu combined comparisons show matching positions.
-5. P2: a transformed homepage booking container constrained the fixed backdrop. Removed the transient transform; desktop backdrop spans the viewport and mobile backdrop spans the viewport above the 60px bottom bar. Clicking it dismisses booking while keeping the mobile menu open. This anchors the requested backdrop reliably rather than preserving a transient capture artifact.
-6. P3: dropdown received an unnecessary 8px height adjustment during diagnosis. Removed it and recaptured at its natural 490px desktop-menu height.
+Desktop CSS viewports 1512×982 and 1280×800; tablet 767×1024; mobile 390×844. User browser zoom was 80%. Raw captures included extra right/bottom canvas padding; images were cropped to measured CSS bounds without resizing. Raw pixel dimensions and normalization are in `capture-metrics.json`. Boards scale only for presentation. Eleven and C have different viewports/content: that comparison evaluates hierarchy and continuity, not pixel equivalence.
 
-## Required fidelity surfaces
+## Findings
 
-- Fonts/typography: original locally saved Whitney Light, Medium, Bold and Light Italic; source sizes, weights, tracking, line heights and wrapping retained. Typography compared in full menus and focused dropdown/submenu crops.
-- Spacing/layout: original responsive stylesheet and markup retained. Desktop map/right-column geometry matches measured source geometry. Mobile spacing and bottom-bar dimensions match source captures.
-- Colors/tokens: original #111 background, #f7f9fb surfaces/text, red accents, divider opacity and booking border styling retained. Focus/hover state must be matched when comparing the CTA fill.
-- Image/asset fidelity: source vector logo/icons and fonts used without handmade replacements. Static map reuses a source screenshot and is slightly softer than a live map. The surrounding homepage uses a bundled original still rather than the source video, outside the navigation comparison scope.
-- Copy/content: all navigation groups, child links and nine booking labels match the capture. Destination URLs preserved; links intentionally open new tabs to keep the prototype accessible.
+No actionable P0/P1/P2 findings remained in the final combined comparisons.
 
-## Interaction checks
+- Fonts/typography: source Whitney assets and weights retained. Context has a deliberately stronger display hierarchy. Descriptions, facts and CTAs remain readable at tested sizes. Focused booking comparison retains wrapping, weight, spacing and external-link icons; capture antialiasing differs slightly.
+- Spacing/layout: preceding desktop choices remain visible; compact sizes show one level. No horizontal overflow at measured viewports. Mobile categories scroll while utilities, season and booking remain accessible.
+- Colors/tokens: Aspen black, light foregrounds, red interaction accents and outline CTAs are preserved. Dark image gradients support text; the selected season uses the supplied rectangular treatment.
+- Images/assets: original logo/sprite icons retained, with supplied seasonal SVG paths. Official larger mountain photos load in exercised contexts and use intentional immersive crops. Booking uses original markup and baseline styling.
+- Copy/content: mountain personalities differ by mountain and season and are visibly draft. Summer access and destinations differ from winter. Snapshot values and backend boundaries are documented in EXPLORATION-C.md.
+- Interaction: no option is auto-selected. Season changes preserve selected mountains and shared sport choices. Back restores preceding levels; utilities remain persistent.
 
-- Desktop menu open/close; focus returns to opener; Escape closes booking first.
-- Book Now inside desktop menu and homepage; outside-click dismissal; desktop/mobile backdrop dimensions.
-- Booking arrow-key navigation moved focus from Season Passes to Lift Tickets; Escape returned focus to trigger.
-- Original CSS hover rules retained, including 30px booking-link translation, title accents and hamburger effects. A pointer sample observed booking-link translation; exhaustive screenshot coverage of every hover and animation frame is not claimed.
-- Mobile fixed bottom bar: y784, height60 at 390 × 844.
-- Mobile menu scroll measured 392px; Four Mountains child screen and Back return work.
-- Desktop right panel at 1440 × 700: client height545, content height750, scroll position204.5 while page scroll remains0.
-- Search opens, focuses input, and closes. Submission targets the production search URL; suggestions are not connected.
-- Booking/account/cart destinations inspected. No purchase, login or checkout action performed.
-- Browser console checked: no error-level entries in the inspected logs.
-- Production build passes without unresolved-asset warnings. Existing four hosting-adapter checks passed.
+## Comparison history
 
-## Remaining limits
+Asset preparation identified small source mountain-card photos as unsuitable for the large context surface. They were upgraded to higher-resolution official hero photographs before final comparison; `asset-sources.json` records dimensions/sources. Final winter, summer and responsive captures show the upgraded images. The first formal combined comparison after that preparation found no substantive visual differences requiring another fix iteration.
 
-No actionable P0/P1/P2 findings remain within the scoped navigation captures. Static map panning/zooming, live weather, live search suggestions, full destination pages and the homepage video are outside this prototype. Desktop animation staggering is reconstructed from source timing, not verified frame by frame. Visual comparison is not an exhaustive pixel-diff certification across all browsers or device sizes.
+## Validation
 
-## Implementation checklist
+Browser exercised open/close; category → options → context; alternate mountains; Winter/Summer; seasonal ski/bike access; lodging; longer mobile Things to Do options through Guides; Trail Maps at root/context; utility dismissal; desktop/mobile Book Now; Weather; Search; Escape through levels; focus return and Tab movement. Overlay evidence: desktop/mobile maps, weather and booking captures.
 
-- [x] Source desktop/mobile captures and local assets.
-- [x] Original navigation styling and link structure.
-- [x] Booking popup, layers, dismissal and keyboard checks.
-- [x] Independent scrolling and mobile submenu/back behavior.
-- [x] Combined source/prototype visual review and corrections.
-- [x] Local preview, clean console check and production build.
-- [ ] Future requested tweaks and optional Figma transfer.
+Console warnings/errors: none observed in the C browser session. Production build and hosting preparation passed. Tests: 15/15 passed. Preservation: original 56, A 85 and B 117 tracked files all unchanged. Source CSS, navigation/hero markup and symbols also match the original.
+
+## Residual checks and follow-up
+
+Draft editorial copy needs review. Weather and search have no live backend. Booking remains winter-oriented in Summer; seasonal checkout taxonomy is a future decision. Physical-device, screen-reader, sub-390px and OS reduced-motion visual sessions were not performed; reduced-motion handling exists in code. Eleven was observed through a destination cascade, not exhaustively tested.
+
+Checklist complete: combined full views and focused booking comparison; five fidelity surfaces; responsive interactions; build/tests; preservation verification. No C deployment/import performed.
