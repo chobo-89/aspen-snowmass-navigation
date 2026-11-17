@@ -1,42 +1,62 @@
-# Exploration C — Design QA
+# Exploration C primary utilities — Design QA
 
 final result: passed
 
-## Comparison targets
+## Latest utility-placement verification
 
-This is an architecture exploration, not a pixel clone of Eleven. The interaction target is its adjacent destination flyout; Aspen source controls and supplied icons provide the brand/fidelity targets.
+The user's latest brief supersedes the expanding row. Source target: the preceding C refinement (`exploration-evidence/refinement/desktop-context.jpg`) plus the requested primary-column placement. Current implementation: `exploration-evidence/primary-utilities/desktop-root.jpg`, `desktop-options.jpg`, `desktop-context.jpg`, `desktop-1280.jpg`, `tablet-context.jpg`, `mobile-root.jpg`, `mobile-context.jpg`, `desktop-maps.jpg`.
 
-Source visual truth: `exploration-evidence/eleven-cascade.jpg` and `../aspen-evolved-original/exploration-evidence/original-book.jpg` (1512×982).
+Combined comparisons opened: `primary-utilities/comparison.jpg`, `primary-utilities/primary-detail.jpg`, `primary-utilities/responsive.jpg`. Primary detail uses native equal 360px crops at all three levels. Final result is passed: the expanding footer is replaced by a compact two-column group above secondary links, inside the primary column; options/context remain full-height. No remaining P0/P1/P2 findings.
 
-Rendered evidence: `desktop-root.jpg`, `desktop-options.jpg`, `desktop-context-winter.jpg`, `desktop-context-summer.jpg`, `tablet-context.jpg`, `mobile-root.jpg`, `mobile-context-summer.jpg`, `desktop-book.jpg` in `exploration-evidence/`.
+Geometry: primary is 360px; utility content is approximately 291px with two approximately 137px tracks and 16px gap. Its x/y/width/height are identical through all three desktop depths, recorded in `primary-utilities/geometry.json`. Item typography remains 30px. Muted 14px utility labels are secondary to primary categories. Existing Aspen typography, palette, photography, mountain copy, CTA and click locking are retained. No new assets/icons were needed.
 
-Full-view combined inputs, opened and reviewed: `reference-comparison.jpg`, `progression-board.jpg`, `responsive-board.jpg`. Seasonal captures supplement these. Focused combined input: `booking-comparison.jpg`, comparing native 280×490 booking regions (source x1113/y101; C x1182/y93). Header placement intentionally differs; booking internal anatomy is preserved.
+Viewports: 1512×982 and 1280×800 desktop, 766×1024 tablet, 390×844 mobile. User zoom was now 90%; screenshot canvas padding was cropped to measured CSS bounds without resizing. Comparison boards scale only for presentation; prior source capture used 80% zoom, so minor raster antialiasing differences are expected.
 
-Desktop CSS viewports 1512×982 and 1280×800; tablet 767×1024; mobile 390×844. User browser zoom was 80%. Raw captures included extra right/bottom canvas padding; images were cropped to measured CSS bounds without resizing. Raw pixel dimensions and normalization are in `capture-metrics.json`. Boards scale only for presentation. Eleven and C have different viewports/content: that comparison evaluates hierarchy and continuity, not pixel equivalence.
+Review found a compact-layout issue during the first responsive comparison: pinning About/Contact/Account/Cart within the primary panel reduced category visibility to two items. Fixed compact layout to scroll primary content and secondary links together while tools remain outside the active panel. Final mobile geometry shows all four category bottoms above the utility boundary (552px versus 568px), and updated mobile-root.jpg verifies the fix. Desktop footer remains anchored as requested.
 
-## Findings
+Browser rechecked all primary categories, option/context progression, Trail Maps, chooser Escape/focus return, seasonal switching, mobile CTA scrolling, mobile Back and resizing compact → desktop. Tools reparent to the primary footer on desktop and remain usable. No console errors/warnings observed. Production build/packaging and 16 tests passed. Original/A/B preservation was verified. GitHub branch update was subsequently requested; only exploration/progressive-discovery is updated.
 
-No actionable P0/P1/P2 findings remained in the final combined comparisons.
+## Earlier refinement record (superseded utility placement)
 
-- Fonts/typography: source Whitney assets and weights retained. Context has a deliberately stronger display hierarchy. Descriptions, facts and CTAs remain readable at tested sizes. Focused booking comparison retains wrapping, weight, spacing and external-link icons; capture antialiasing differs slightly.
-- Spacing/layout: preceding desktop choices remain visible; compact sizes show one level. No horizontal overflow at measured viewports. Mobile categories scroll while utilities, season and booking remain accessible.
-- Colors/tokens: Aspen black, light foregrounds, red interaction accents and outline CTAs are preserved. Dark image gradients support text; the selected season uses the supplied rectangular treatment.
-- Images/assets: original logo/sprite icons retained, with supplied seasonal SVG paths. Official larger mountain photos load in exercised contexts and use intentional immersive crops. Booking uses original markup and baseline styling.
-- Copy/content: mountain personalities differ by mountain and season and are visibly draft. Summer access and destinations differ from winter. Snapshot values and backend boundaries are documented in EXPLORATION-C.md.
-- Interaction: no option is auto-selected. Season changes preserve selected mountains and shared sport choices. Back restores preceding levels; utilities remain persistent.
+### Source and implementation
 
-## Comparison history
+The source target is the existing C prototype plus the user's scoped refinement brief: preserve visual direction and final content; fix column compression, typography changes, inherited back label and utility placement. Original C visual truth: `exploration-evidence/desktop-root.jpg`, `desktop-options.jpg`, `desktop-context-winter.jpg`. Original booking fidelity evidence remains in `exploration-evidence/booking-comparison.jpg`.
 
-Asset preparation identified small source mountain-card photos as unsuitable for the large context surface. They were upgraded to higher-resolution official hero photographs before final comparison; `asset-sources.json` records dimensions/sources. Final winter, summer and responsive captures show the upgraded images. The first formal combined comparison after that preparation found no substantive visual differences requiring another fix iteration.
+Implementation evidence: `exploration-evidence/refinement/desktop-root.jpg`, `desktop-options.jpg`, `desktop-context.jpg`, `desktop-1280.jpg`, `tablet-context.jpg`, `mobile-root.jpg`, `mobile-options.jpg`, `mobile-context.jpg`, `desktop-lifts.jpg`, `mobile-maps.jpg`, `mobile-book.jpg`.
 
-## Validation
+Combined inputs opened and reviewed: `refinement/before-after.jpg` (original C and refined C at the same winter mountain state), `refinement/primary-detail.jpg` (native 360px primary-column crops across all depths), and `refinement/responsive-board.jpg`. The source and revised full views intentionally differ in navigation proportions, utility extent and contextual height as requested. Focused primary crops verify consistent typography/spacing; original booking evidence covers retained controls.
 
-Browser exercised open/close; category → options → context; alternate mountains; Winter/Summer; seasonal ski/bike access; lodging; longer mobile Things to Do options through Guides; Trail Maps at root/context; utility dismissal; desktop/mobile Book Now; Weather; Search; Escape through levels; focus return and Tab movement. Overlay evidence: desktop/mobile maps, weather and booking captures.
+## Dimensions and normalization
 
-Console warnings/errors: none observed in the C browser session. Production build and hosting preparation passed. Tests: 15/15 passed. Preservation: original 56, A 85 and B 117 tracked files all unchanged. Source CSS, navigation/hero markup and symbols also match the original.
+CSS viewports: desktop 1512×982 and 1280×800; tablet 767×1024; mobile 390×844. Browser zoom remained at the user's 80%. Raw screenshots included right/bottom canvas padding (for example 1891×1228 for the 1512×982 view); stored captures were cropped at the measured CSS viewport bounds without resizing. Boards scale images for presentation only. The focused primary comparison uses equal native 360×717px regions. Browser viewport overrides were reset before handoff.
 
-## Residual checks and follow-up
+`refinement/geometry.json` records all three desktop levels. Primary width 360px, heading 42px, item text 30px, padding 40px 34px, item padding 21px 0 and gap 14px are identical across states, including bounds and heading margins. Options remain 320px wide. Utilities grow 360 → 680 → 680px. Context is 792.5px wide at 1512px, spans the full content height, and contains no utility links. No horizontal overflow at tested dimensions.
 
-Draft editorial copy needs review. Weather and search have no live backend. Booking remains winter-oriented in Summer; seasonal checkout taxonomy is a future decision. Physical-device, screen-reader, sub-390px and OS reduced-motion visual sessions were not performed; reduced-motion handling exists in code. Eleven was observed through a destination cascade, not exhaustively tested.
+## Findings and fix history
 
-Checklist complete: combined full views and focused booking comparison; five fidelity surfaces; responsive interactions; build/tests; preservation verification. No C deployment/import performed.
+- [P2, resolved] Prior cascade reduced the primary from 360px to 270px, its item typography from 30px to 24px, and changed heading size/padding. Removed depth-specific primary overrides and fixed the options track at 320px. Post-fix evidence: primary-detail.jpg and geometry.json.
+- [P2, resolved] Prior viewport-wide utility strip visually framed the page and put practical tools beneath the context. Moved utilities into the cascade grid. They span only the active navigation tracks; the photographic region spans the full height alongside them. Post-fix evidence: before-after.jpg and desktop-context.jpg.
+- [P2, resolved] Inherited “All destinations” language did not fit this offering. Replaced it with “Back to Explore”; incidental “destination page” copy became “linked page.” Evidence: desktop-options.jpg and mobile-options.jpg.
+- Selection refinement: retained click-only event delegation and made repeated selections idempotent. Re-clicking the active option/category keeps context. Moving the pointer from options into the photograph did not replace the selected Aspen Mountain profile. Back remains the explicit return path.
+
+Final combined comparison after these fixes found no remaining actionable P0/P1/P2 issues.
+
+## Five fidelity surfaces
+
+- Typography: original Whitney font assets and weights retained. Primary item, heading and spacing do not change at deeper levels. Options typography also remains constant when context opens. Mountain heading/body/fact hierarchy remains intact.
+- Layout rhythm: fixed tracks expand horizontally, with stable primary padding/spacing. Utility row belongs to the navigation tracks. Compact panels use a single active level with Back. Longer content scrolls independently without hiding persistent tools.
+- Colors/tokens: Aspen black, light text and red accents remain. Active category and option use red underlines/arrows rather than size changes. Source season toggle, top controls and CTA treatment remain.
+- Image quality/assets: same official photographs, logo, fonts and supplied seasonal SVGs. Increased context height changes the crop intentionally; imagery remains immersive with legible gradient-backed content. No replacement brand assets introduced.
+- Copy/content: same mountain personalities, descriptions, Best for, The feel and primary CTA. New back language is contextual. Mountain draft labels and prototype operational-data boundaries remain documented.
+
+## Interaction and regression checks
+
+Browser exercised initial/category/context progression; repeated category/option selection; all four primary categories; seasonal ski-to-bike selection; Back to Explore; tablet/mobile Back; mobile context scrolling to CTA; utility access and chooser dismissal preserving context; Lift Status; Trail Maps; mobile booking; keyboard Escape and focus return. Pointer travel from options into context retained Aspen Mountain. Event inspection confirms only clicks dispatch category/option transitions; hover styling is feedback only.
+
+Production build and hosting packaging passed; 16/16 tests passed, including the locked-selection regression. No console warnings/errors observed. Original booking interaction block is unchanged. Original/A/B tracked-file hashes remain unchanged; see initial preservation manifest and the verification of this refinement.
+
+## Limits / follow-up
+
+Weather is captured data; search has no live backend; booking retains its original winter catalog. Draft copy needs editorial review. No independent physical touch-device, screen-reader, sub-390px or OS reduced-motion session was performed. Reduced-motion support remains in CSS/JavaScript. These are existing prototype boundaries.
+
+Implementation checklist complete: stable geometry, click locking, contextual Back, integrated utilities, preserved immersive profile, responsive checks, combined visual comparison, build/tests and isolation verification. This refinement is saved on exploration/progressive-discovery; the subsequent utility placement above is the current version.

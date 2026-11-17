@@ -20,3 +20,11 @@ The user selected this order: save to a private GitHub repository, try the repos
 ## Exploration C — Progressive Discovery
 
 This is a separate worktree on exploration/progressive-discovery, based on the verified original snapshot 7336516. The user's current brief overrides the earlier clone-only restriction for this checkout. Build one cascading navigation architecture: category → option → useful context, without auto-selecting an option. Keep Trail Maps, Weather, Mountain Cameras, Lift Status and Parking persistently accessible at every expanded level. Season changes must update options, profiles, imagery and relevant destinations, preserving a selected mountain. Reuse the supplied seasonal SVG paths and source booking internals/brand assets. Keep visible Menu/Close labels off the source menu icon. Do not edit original/A/B or publish/import this exploration without a later request. The full brief is in EXPLORATION-C-BRIEF.md.
+
+## C refinement — stable cascade
+
+Keep the 360px desktop primary column and 320px options column unchanged across all depths, including typography, padding and spacing. Cascades expand horizontally; they never compress existing columns. Selection is click-based and remains locked until a different choice or Back; hover only provides feedback. Use “Back to Explore,” never “All destinations.” Utilities belong under the navigation columns, spanning the first column initially and both navigation columns after category selection. The immersive right panel spans the full content height and contains no utilities. Use compact sequential panels below 1280px to preserve a useful context width. Keep this refinement local until another publication request; original/A/B remain untouched.
+
+## C utility placement — latest direction
+
+The latest feedback supersedes the expanding utility row: on desktop, utilities are a compact two-column “On the Mountain” group inside the primary column, above About Us / Contact Us. The group never grows with the cascade. Only exploratory columns expand. Keep primary typography/width, click-locked progression, and immersive context unchanged. On sequential compact layouts, retain the same utility group beneath the active level so practical tools remain available even when the primary panel is hidden.
