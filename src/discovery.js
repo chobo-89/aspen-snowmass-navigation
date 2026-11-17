@@ -12,13 +12,14 @@ export function prepareDiscovery(root){
  <div class="cascade-scrim" aria-hidden="true"></div>
  <section class="cascade-nav" role="dialog" aria-modal="true" aria-label="Explore Aspen Snowmass" id="cascade-navigation" aria-hidden="true" inert>
   <div class="cascade-columns">
-   <nav class="cascade-panel cascade-categories" aria-label="Explore categories"><p class="cascade-eyebrow">Aspen Snowmass / Explore</p><h2>Find your<br>kind of day.</h2><div data-category-list></div><div class="cascade-secondary">${out('/discover/who-we-are','About Us')}${out('/discover/guest-services','Contact Us')}</div><div class="cascade-compact-accounts"></div></nav>
-   <nav class="cascade-panel cascade-options" id="cascade-options" aria-label="Category options" inert><button type="button" class="cascade-back" data-back="category">${icon('chevron-right')} All destinations</button><div data-options></div></nav>
+   <nav class="cascade-panel cascade-categories" aria-label="Explore categories"><div class="cascade-primary-explore"><p class="cascade-eyebrow">Aspen Snowmass / Explore</p><h2>Find your<br>kind of day.</h2><div data-category-list></div></div><div class="cascade-primary-footer"><div class="cascade-secondary">${out('/discover/who-we-are','About Us')}${out('/discover/guest-services','Contact Us')}</div><div class="cascade-compact-accounts"></div></div></nav>
+   <nav class="cascade-panel cascade-options" id="cascade-options" aria-label="Category options" inert><button type="button" class="cascade-back" data-back="category">${icon('chevron-right')} Back to Explore</button><div data-options></div></nav>
    <section class="cascade-panel cascade-context" id="cascade-context" aria-label="Selected experience" inert><div data-context></div></section>
-  </div>
   <nav class="cascade-utilities" aria-label="Mountain utilities"><span class="cascade-eyebrow">On the mountain</span><button type="button" data-utility="maps">Trail Maps</button><button type="button" data-weather>Weather <span>34°F</span></button>${out('/four-mountains/mountain-cams','Mountain Cameras')}<button type="button" data-utility="lifts">Lift Status</button>${out('/visit/parking-and-getting-around','Parking')}</nav>
+  </div>
   <section class="cascade-utility-sheet" aria-label="Choose a mountain" hidden><div><h2 tabindex="-1"></h2><button type="button" data-close-utility aria-label="Close mountain chooser">${icon('close')}</button></div><ul></ul></section>
  </section><p class="cascade-announcement" role="status" aria-live="polite"></p>`;
+ shell.querySelector('.cascade-primary-footer').prepend(shell.querySelector('.cascade-utilities'));
  shell.querySelector('.cascade-brand').append(original.logo);original.logo.setAttribute('aria-label','Aspen Snowmass');
  shell.querySelector('.cascade-menu').append(original.menu);original.menu.setAttribute('aria-controls','cascade-navigation');
  shell.querySelector('.cascade-book').append(original.book);original.book.classList.remove('primary-navigation__book-now__container');

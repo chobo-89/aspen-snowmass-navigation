@@ -5,7 +5,7 @@ export function initializeNavigation(root,model){
   const on=(el,event,fn)=>el?.addEventListener(event,fn,{signal:controller.signal});
   const $=(s,el=root)=>el.querySelector(s);
   const $$=(s,el=root)=>[...el.querySelectorAll(s)];
-  const compact=()=>innerWidth<1100;
+  const compact=()=>innerWidth<1280;
   const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
   const animate=(el,frames,duration=400,delay=0)=>el.animate(frames,{duration:reduced()?0:duration,delay:reduced()?0:delay,easing:'cubic-bezier(.455,.03,.515,.955)'});
   const nav=$('.cascade-nav'),columns=$('.cascade-columns'),header=$('.cascade-header'),shell=$('.cascade-shell'),main=$('main');
@@ -75,6 +75,11 @@ export function initializeNavigation(root,model){
   on(window, 'click', () => closeBook());
   function refresh(){
     const s=model.state,modal=!!auxiliary;
+    const utilities=$('.cascade-utilities');
+    const utilityParent=compact()?columns:$('.cascade-primary-footer');
+    if(utilities.parentElement!==utilityParent){
+      if(compact())utilityParent.append(utilities);else utilityParent.prepend(utilities);
+    }
     main.inert=s.open||modal;shell.inert=modal;nav.inert=!s.open||modal;
     if(s.open&&!modal){shell.setAttribute('role','dialog');shell.setAttribute('aria-modal','true');shell.setAttribute('aria-label','Explore Aspen Snowmass');}
     else{shell.removeAttribute('role');shell.removeAttribute('aria-modal');shell.removeAttribute('aria-label');}
@@ -94,7 +99,9 @@ export function initializeNavigation(root,model){
   }
   function go(event,source){
     closeBook();const previous=model.dispatch(event),s=model.state;
-    if(s.open||event.type==='CLOSE'||event.type==='BACK')closingAnimation?.cancel();refresh();
+    if(s.open||event.type==='CLOSE'||event.type==='BACK')closingAnimation?.cancel();
+    refresh();
+    if(previous===s)return;
     if(event.type==='OPEN'){
       nav.classList.add('active');
       animate(columns,[{opacity:0,transform:compact()?'translateY(16px)':'translateX(-24px)'},{opacity:1,transform:'translate(0)'}],compact()?300:400);
